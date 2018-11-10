@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "cliente".
  *
  * @property int $id_user
- * @property int $cpf_cliente
+ * @property bigint $cpf_cliente
  * @property string $nome_completo
  * @property string $email
  * @property string $data_hora_cadastro

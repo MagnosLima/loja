@@ -17,7 +17,7 @@ use Yii;
  * @property Cliente $cliente
  * @property Pedido[] $pedidos
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -25,6 +25,19 @@ class User extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'user';
+    }
+
+    public function beforeSave( $insert )
+    {
+        //Ação disparada no insert ou update.
+        //Fazer a mágica aqui - atributos sujos (valores alterados).
+        Yii::trace("Antes de criptografar");
+        if (array_key_exists('password', $this->dirtyAttributes)) {
+            $this->password = Yii:: $app->getSecurity()->generatePasswordHash($this->password);
+            Yii::trace("Depois de criptografar");
+        }
+
+        return parent::beforeSave($insert);
     }
 
     /**
@@ -70,5 +83,35 @@ class User extends \yii\db\ActiveRecord
     public function getPedidos()
     {
         return $this->hasMany(Pedido::className(), ['id_user' => 'id_user']);
+    }
+
+    public static function findIdentity($id)
+    {
+        return static::findOne(['username'=>$id]);
+    }
+
+    //RBCA
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+
+    public function getId()
+    {
+        return $this->username;
+    }
+
+    public function getAuthKey()
+    {
+        return $this->auth_key;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return $this->auth_key === $authKey;
+    }
+
+    public function validatePassword($password){
+        return Yii::$app->getSecurity()->validatePassword($password, $this->password);
     }
 }
