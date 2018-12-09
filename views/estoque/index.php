@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Estoques');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="estoque-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,8 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_produto',
             'quantidade',
             'tipo',
-            'quantidade_total',
-            //'data_hora_operacao',
+            'data_hora_operacao',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

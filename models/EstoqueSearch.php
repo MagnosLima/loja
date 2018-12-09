@@ -18,7 +18,7 @@ class EstoqueSearch extends Estoque
     public function rules()
     {
         return [
-            [['id_estoque', 'id_produto', 'quantidade', 'quantidade_total'], 'integer'],
+            [['id_estoque', 'id_produto', 'quantidade'], 'integer'],
             [['tipo', 'data_hora_operacao'], 'safe'],
         ];
     }
@@ -62,7 +62,6 @@ class EstoqueSearch extends Estoque
             'id_estoque' => $this->id_estoque,
             'id_produto' => $this->id_produto,
             'quantidade' => $this->quantidade,
-            'quantidade_total' => $this->quantidade_total,
             'data_hora_operacao' => $this->data_hora_operacao,
         ]);
 

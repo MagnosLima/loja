@@ -3,7 +3,10 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\User;
 use app\models\Cliente;
+use app\models\Telefone;
+use app\models\Endereco;
 use app\models\ClienteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -62,16 +65,36 @@ class ClienteController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
+    //User e cliente
     public function actionCreate()
     {
-        $model = new Cliente();
+        $user = new User();
+        $cliente = new Cliente();
+        $telefone = new Telefone();
+        $endereco = new Endereco();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_user]);
+        if ($user->load(Yii::$app->request->post()) && $cliente->load(Yii::$app->request->post()) && $telefone->load(Yii::$app->request->post()) && $endereco->load(Yii::$app->request->post())) {
+            $user->type = 'usuario';
+            if($user->save()){
+                $cliente->id_user = $user->id_user;
+                $cliente->data_hora_cadastro = date('2018-11-12 17:45:25');
+                if($cliente->save()){
+                    //telefone
+                    $telefone->id_user = $user->id_user;
+                    $telefone->save();
+                    $endereco->id_user = $user->id_user;
+                    $endereco->save();
+                    return $this->redirect(['view', 'id' => $cliente->id_user]);        
+                }
+            }
         }
 
         return $this->render('create', [
-            'model' => $model,
+            'user' => $user,
+            'cliente' => $cliente,
+            'telefone' => $telefone,
+            'endereco' => $endereco,
         ]);
     }
 

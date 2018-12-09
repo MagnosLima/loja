@@ -18,8 +18,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tipo')->dropDownList([ 'saida' => 'Saida', 'entrada' => 'Entrada', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'quantidade_total')->textInput() ?>
-
     <?= $form->field($model, 'data_hora_operacao')->textInput() ?>
 
     <div class="form-group">

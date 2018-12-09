@@ -8,19 +8,40 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="cliente-form">
+<!-- <div class="cliente-form"> -->
+<div class="container">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
+    <!-- Campos de user -->
 
-    <?= $form->field($model, 'cpf_cliente')->textInput() ?>
+    <?= $form->field($user, 'username')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nome_completo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($user, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <!-- Campos de cliente -->
 
-    <?= $form->field($model, 'data_hora_cadastro')->textInput() ?>
+    <?= $form->field($cliente, 'cpf_cliente')->textInput() ?>
+
+    <?= $form->field($cliente, 'nome_completo')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($cliente, 'email')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($telefone, 'numero_principal')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($telefone, 'numero_alt')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($endereco, 'logradouro')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($endereco, 'numero')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($endereco, 'bairro')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($endereco, 'cep')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($endereco, 'municipio')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($endereco, 'estado')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

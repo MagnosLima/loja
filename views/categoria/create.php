@@ -10,7 +10,7 @@ $this->title = Yii::t('app', 'Create Categoria');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Categorias'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="categoria-create">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

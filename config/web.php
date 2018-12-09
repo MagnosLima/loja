@@ -13,10 +13,14 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'language' => 'pt-BR',
+    'layout' => 'agency',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'kmKFLK2jbtG4hCODVWYxTaSfk8M5nKh5',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -44,15 +48,19 @@ $config = [
                 ],
             ],
         ],
+        /*'authManager' => [
+            'class' => 'yii\rbac\DbManager',*/
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'boss' => 'site/index',
+                //'user/<id:>\d+>' => 'user/view',
+                'cliente/<id:\d+>' => 'cliente/view'
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];

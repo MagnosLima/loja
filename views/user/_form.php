@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'type')->dropDownList([ 'admin' => 'Admin', 'root' => 'Root', 'usuario' => 'Usuario', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'type')->dropDownList([ 'admin' => 'Admin', 'root' => 'Root', ], ['prompt' => '']) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

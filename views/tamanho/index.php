@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Tamanhos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="tamanho-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

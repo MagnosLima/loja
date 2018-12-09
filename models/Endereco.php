@@ -10,6 +10,7 @@ use Yii;
  * @property int $id_user
  * @property string $logradouro
  * @property string $numero
+ * @property string $bairro
  * @property string $cep
  * @property string $municipio
  * @property string $estado
@@ -32,9 +33,9 @@ class Endereco extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'logradouro', 'numero', 'cep', 'municipio', 'estado'], 'required'],
+            [['id_user', 'logradouro', 'numero', 'bairro', 'cep', 'municipio', 'estado'], 'required'],
             [['id_user'], 'integer'],
-            [['logradouro', 'municipio', 'estado'], 'string', 'max' => 45],
+            [['logradouro', 'bairro', 'municipio', 'estado'], 'string', 'max' => 45],
             [['numero'], 'string', 'max' => 10],
             [['cep'], 'string', 'max' => 9],
             [['id_user'], 'unique'],
@@ -51,6 +52,7 @@ class Endereco extends \yii\db\ActiveRecord
             'id_user' => Yii::t('app', 'Id User'),
             'logradouro' => Yii::t('app', 'Logradouro'),
             'numero' => Yii::t('app', 'Numero'),
+            'bairro' => Yii::t('app', 'Bairro'),
             'cep' => Yii::t('app', 'Cep'),
             'municipio' => Yii::t('app', 'Municipio'),
             'estado' => Yii::t('app', 'Estado'),

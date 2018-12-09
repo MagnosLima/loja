@@ -10,7 +10,7 @@ $this->title = Yii::t('app', 'Create Produto');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Produtos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="produto-create">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

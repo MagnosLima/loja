@@ -11,7 +11,6 @@ use Yii;
  * @property int $id_produto
  * @property int $quantidade
  * @property string $tipo
- * @property int $quantidade_total
  * @property string $data_hora_operacao
  *
  * @property Produto $produto
@@ -32,8 +31,8 @@ class Estoque extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_produto', 'quantidade', 'tipo', 'quantidade_total', 'data_hora_operacao'], 'required'],
-            [['id_produto', 'quantidade', 'quantidade_total'], 'integer'],
+            [['id_produto', 'quantidade', 'tipo', 'data_hora_operacao'], 'required'],
+            [['id_produto', 'quantidade'], 'integer'],
             [['tipo'], 'string'],
             [['data_hora_operacao'], 'safe'],
             [['id_produto'], 'exist', 'skipOnError' => true, 'targetClass' => Produto::className(), 'targetAttribute' => ['id_produto' => 'id_produto']],
@@ -50,7 +49,6 @@ class Estoque extends \yii\db\ActiveRecord
             'id_produto' => Yii::t('app', 'Id Produto'),
             'quantidade' => Yii::t('app', 'Quantidade'),
             'tipo' => Yii::t('app', 'Tipo'),
-            'quantidade_total' => Yii::t('app', 'Quantidade Total'),
             'data_hora_operacao' => Yii::t('app', 'Data Hora Operacao'),
         ];
     }

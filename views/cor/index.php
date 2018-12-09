@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Cors');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cor-index">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

@@ -10,7 +10,8 @@ $this->title = $model->id_user;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Clientes'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cliente-view">
+<!-- <div class="cliente-view"> -->
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

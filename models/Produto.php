@@ -12,6 +12,7 @@ use Yii;
  * @property string $nome
  * @property string $descricao
  * @property double $preco
+ * @property int $quantidade_total
  *
  * @property Estoque[] $estoques
  * @property ImagensProduto $imagensProduto
@@ -39,8 +40,8 @@ class Produto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_categoria', 'nome', 'descricao', 'preco'], 'required'],
-            [['id_categoria'], 'integer'],
+            [['id_categoria', 'nome', 'descricao', 'preco', 'quantidade_total'], 'required'],
+            [['id_categoria', 'quantidade_total'], 'integer'],
             [['descricao'], 'string'],
             [['preco'], 'number'],
             [['nome'], 'string', 'max' => 45],
@@ -59,6 +60,7 @@ class Produto extends \yii\db\ActiveRecord
             'nome' => Yii::t('app', 'Nome'),
             'descricao' => Yii::t('app', 'Descricao'),
             'preco' => Yii::t('app', 'Preco'),
+            'quantidade_total' => Yii::t('app', 'Quantidade Total'),
         ];
     }
 
